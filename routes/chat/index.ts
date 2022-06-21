@@ -1,10 +1,10 @@
 import {  Router } from 'express';
-import userRout from '../../controllers/users'
+import chatRout from '../../controllers/chart'
 import isAuth from '../../middleware/isAuth';
 
 const user = Router()
 user.use(isAuth)
-user.post('/update-avater', userRout.avatar_base_64)
-user.get('/logout', userRout.logout)
+user.get('/', chatRout.getChat)
+user.post('/', chatRout.addChat)
 
 export default user

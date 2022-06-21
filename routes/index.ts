@@ -1,7 +1,7 @@
 import {  Router } from 'express';
 import auth from './auth'
 import users from './users'
-import chart from './chart'
+import chat from './chat'
 
 const routes = Router()
 routes.get('/', (req, res) => {
@@ -9,6 +9,6 @@ routes.get('/', (req, res) => {
   })
 routes.use('/api/auth/', auth)
 routes.use('/api/user/', users)
-routes.use('/api/chart/', chart)
+routes.use('/api/chat/', chat)
 
 export default routes

@@ -3,12 +3,14 @@ import routes from './routes'
 import Knex from 'knex'
 import { Model } from 'objection'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 const environments = require('./knexfile') 
 require('dotenv').config();
 express.json({limit:2000, type: 'application/json'})
 const app: Express = express();
 const port = process.env.PORT|| 1337;
 // parse application/json
+app.use(cors())
 app.use(bodyParser.json())
 const NODE_ENV = process.env.NODE_ENV || "development";
 // Initialize knex.

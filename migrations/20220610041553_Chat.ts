@@ -2,7 +2,7 @@ import { Knex } from "knex";
 
 
 export async function up(knex: Knex): Promise<void> {
-    return knex.schema.createTable("chart", (table) => {
+    return knex.schema.createTable("chat", (table) => {
 		table.increments("id").primary();
 		table.bigInteger("user_id").notNullable();
 		table.bigInteger("peer_user_id").notNullable();
