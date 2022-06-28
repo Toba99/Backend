@@ -9,12 +9,17 @@ const responses = {
     "I have clean conscience. I haven’t used it once till now.",
     "Did you hear about the crook who stole a calendar? He got twelve months.",
   ],
+  hunger:["haha! i can't fix that for you"],
   get_malaria: ["You are showing symptoms of Malaria"],
   get_typhoid: ["You are showing symptoms of Typhoid fever"],
   get_hayfever: ["You are showing symptoms of Hay Fever"],
   get_sinusitis: ["You are showing symptoms of Sinusitis (Sinus Infection)"],
   get_commoncold: ["You are showing symptoms of Common Cold"],
-  get_backpain: ["For the back aches you are experiencing--"],
+  get_backpain: ["For the back aches you are experiencing"],
+  get_alergies: ["You are having an alergic reaction"],
+  get_pregnant: ["You may be pregnant, i suggest you visit a hospital or clinic"],
+  get_diarrhea: ["You seem to have diarrhea which is loose, watery and possibly more-frequent bowel movements and is a common problem."],
+  get_cancer: ["What you have may be more serious than a minor illness, i advice you head to a hospital immidiately to speak to a Doctor."],
   get_flu: ["You are showing symptoms of the Flu"],
   noresponse: [
     "I dont seem to understand you. Please enter your symptoms, e.g (Cough, Headache, e.t.c)",
@@ -43,6 +48,11 @@ const recommendations = {
   get_backpain: [
     "Back pain will usually improve within a few weeks or months. There are several things you can try to help reduce your pain in the meantime. ",
   ],
+  get_alergies: [
+    "Alergies usually subside after a couple of days wit the use of ointments, but if it persists, i suggest you see the doctor immidiately to get an injection or a shot.",
+  ],
+  get_diarrhea: ["Luckily, diarrhea is usually short-lived, lasting no more than a few days. But when diarrhea lasts beyond a few days into weeks, it usually indicates that there's another problem such as irritable bowel syndrome (IBS) or a more serious disorder, including persistent infection, celiac disease or inflammatory bowel disease (IBD)."
+],
   get_flu: [
     "OVERVIEW: You can often treat the flu without seeing a GP and should begin to feel better in about a week.",
   ],
@@ -65,10 +75,15 @@ const symptoms = {
     "SYMPTOMS: Sinusitis is common after a cold or flu. Symptoms of sinusitis include: PAIN, SWELLING and TENDERNESS around your CHEEKS, EYES and FOREHEAD, a BLOCKED NOSE, a reduced SENSE OF SMELL, GREEN or YELLOW MUCHUS FROM NOSE, a SINUS HEADACHE, a HIGH TEMPERATURE, TOOTHACHE, BAD BREATH.",
   ],
   get_commoncold: [
-    "SYMPTOMS: Cold symptoms come on gradually and can include: a BLOCKED OR RUNNY NOSE, a SORE THROAT, HEADACHE, MUSCLE ACHE, COUGH, SNEEZING, a RAISED TEMPERATURE, pressure in youyr eyes and ears, loss of taste and smell",
+    "SYMPTOMS: Cold symptoms come on gradually and can include: a BLOCKED OR RUNNY NOSE, a SORE THROAT, HEADACHE, MUSCLE ACHE, COUGH, SNEEZING, a RAISED TEMPERATURE, pressure in your eyes and ears, loss of taste and smell",
   ],
   get_backpain: [
     "It's not always possible to identify the cause of back pain but it's rarely anything serious. Most back pain is what's known as non-specific (there's no obvious cause) or mechanical (the pain originates from the joints, bones or soft tissues in and around the spine).",
+  ],
+  get_alergies: [
+    "The symptoms vary depending on what you're allergic to and how you come into contact with it. For example, you may have a runny nose if exposed to pollen, develop a rash if you have a skin allergy, or feel sick if you eat something you're allergic to.",
+  ],
+  get_diarrhea: ["Signs and symptoms associated with diarrhea (loose, watery stools) may include: Abdominal cramps or pain, Bloating, Nausea, Vomiting, Fever, Blood in the stool, Mucus in the stool, Urgent need to have a bowel movement"
   ],
   get_flu: [
     "SYMPTOMS: Flu symptoms come on very quickly and can include: a sudden fever – a temperature of 38C or above, an aching body, feeling tired or exhausted, a dry cough, a sore throat, a headache, difficulty sleeping, loss of appetite, diarrhoea or tummy pain, feeling sick and being sick",
@@ -97,6 +112,11 @@ const causes = {
   get_backpain: [
     "How to relieve back pain: stay as active as possible and try to continue your daily activities – this is 1 of the most important things you can do, as resting for long periods is likely to make the pain worse, try exercises and stretches for back pain; other activities such as walking, swimming, yoga and pilates may also be helpful, take anti-inflammatory painkillers, such as ibuprofen – remember to check the medicine is safe for you to take and ask a pharmacist if you're not sure, use hot or cold compression packs for short-term relief – you can buy these from a pharmacy, or a hot water bottle or a bag of frozen vegetables wrapped in a cloth or towel will work just as welltake paracetamol or tramadol",
   ],
+  get_alergies: [
+    "It is often caused by a variety of things unique to us as individuals.",
+  ],
+  get_diarrhea: ["A number of diseases and conditions can cause diarrhea, including: viruses, bactaria and infection, medications, lactose intolerance, surgery, digestive dissorders, etc."
+  ],
   get_flu: [
     "How to treat flu yourself-- To help you get better more quickly: rest and sleep, keep warm, take paracetamol or ibuprofen to lower your temperature and treat aches and pains, drink plenty of water to avoid dehydration (your pee should be light yellow or clear)",
   ],
@@ -124,6 +144,11 @@ const drugs = {
   get_backpain: [
     "Read more on back pain at: https://www.nhs.uk/conditions/back-pain/",
   ],
+  get_alergies: [
+    "Medicines for mild allergies are available from pharmacies without a prescription. But always ask a pharmacist or GP for advice before starting any new medicine, as they're not suitable for everyone.",
+  ],
+  get_diarrhea: ["It can be curbed or prevented by Washing your hands to prevent the spread of infectious diarrhea. To ensure adequate hand-washing, Diarrhea commonly affects people who travel to countries where there's inadequate sanitation and contaminated food. To reduce your risk: Watch what you eat or drink, and finally use adequate antibiotics."
+  ],
   get_flu: [
     "A pharmacist can help with flu. A pharmacist can give treatment advice and recommend flu remedies. Be careful not to use flu remedies if you're taking paracetamol and ibuprofen tablets as it's easy to take more than the recommended dose. Visit https://www.nhs.uk/conditions/flu/ to learn more",
   ],
@@ -132,6 +157,7 @@ const drugs = {
 const allIntents = {
   intss: [
     "greetings",
+    "hunger",
     "jokes",
     "get_headache",
     "get_malaria",
@@ -139,7 +165,11 @@ const allIntents = {
     "get_hayfever",
     "get_sinusitis",
     "get_commoncold",
+    "get_diarrhea",
     "get_backpain",
+    "get_alergies",
+    "get_pregnant",
+    "get_cancer",
     "get_flu",
     "noresponse",
   ],
