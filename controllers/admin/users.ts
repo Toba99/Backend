@@ -4,7 +4,7 @@ const botId = process.env.BOT || '1';
 export default async (req: Request, res: Response) => {
 	try {
 		const users = await User.query().whereNot({ id: botId });
-
+		users.forEach(us => us.password = null);
 		return res.status(200).send({ status: true, data: { users: users }, message: "Users loaded successful" })
 	} catch (error: any) {
 		console.log("Admin Users Error ======>", error.message, error.stack);

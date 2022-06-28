@@ -12,6 +12,7 @@ export async function up(knex: Knex): Promise<void> {
 		table.datetime("email_verified_at", { useTz: true, precision: 6 });
 		table.string("password").notNullable();
 		table.integer("login_attempts").notNullable().defaultTo(0);
+		table.integer("isadmin").notNullable().defaultTo(0);
 		table
 			.datetime("created_at", { useTz: true, precision: 6 })
 			.defaultTo(knex.fn.now(6));
